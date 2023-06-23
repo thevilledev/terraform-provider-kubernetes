@@ -73,10 +73,10 @@ func testAccKubernetesDataSourceConfigMapConfig_basic(name string) string {
 }
 
 func testAccKubernetesDataSourceConfigMapConfig_read() string {
-	return fmt.Sprintf(`data "kubernetes_config_map" "test" {
+	return `data "kubernetes_config_map" "test" {
   metadata {
     name = "${kubernetes_config_map.test.metadata.0.name}"
   }
 }
-`)
+`
 }
