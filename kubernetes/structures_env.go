@@ -67,10 +67,10 @@ func expandFieldRefMap(e interface{}) map[string]interface{} {
 	in := e.(map[string]interface{})
 	expandedValues := make(map[string]interface{})
 
-	if v, ok := in["api_version"].(interface{}); ok && v != nil {
+	if v, ok := in["api_version"]; ok && v != nil {
 		expandedValues["apiVersion"] = v
 	}
-	if v, ok := in["field_path"].([]interface{}); ok && v != nil {
+	if v, ok := in["field_path"]; ok && v != nil {
 		expandedValues["fieldPath"] = v
 	}
 
@@ -85,13 +85,13 @@ func expandResourceFieldMap(e interface{}) map[string]interface{} {
 	in := e.(map[string]interface{})
 	expandedValues := make(map[string]interface{})
 
-	if v, ok := in["container_name"].(interface{}); ok && v != nil {
+	if v, ok := in["container_name"]; ok && v != nil {
 		expandedValues["containerName"] = v
 	}
-	if v, ok := in["divisor"].([]interface{}); ok && v != nil {
+	if v, ok := in["divisor"]; ok && v != nil {
 		expandedValues["divisor"] = v
 	}
-	if v, ok := in["resource"].([]interface{}); ok && v != nil {
+	if v, ok := in["resource"]; ok && v != nil {
 		expandedValues["resource"] = v
 	}
 
@@ -137,16 +137,16 @@ func flattenEnvValueFromMap(e interface{}) ([]interface{}, error) {
 	in := e.(map[string]interface{})
 	expandedValues := make(map[string]interface{})
 
-	if v, ok := in["configMapKeyRef"].(interface{}); ok && v != nil {
+	if v, ok := in["configMapKeyRef"]; ok && v != nil {
 		expandedValues["config_map_key_ref"] = []interface{}{v}
 	}
-	if v, ok := in["fieldRef"].(interface{}); ok && v != nil {
+	if v, ok := in["fieldRef"]; ok && v != nil {
 		expandedValues["field_ref"] = flattenFieldRefMap(v)
 	}
-	if v, ok := in["resourceFieldRef"].(interface{}); ok && v != nil {
+	if v, ok := in["resourceFieldRef"]; ok && v != nil {
 		expandedValues["resource_field_ref"] = flattenResourceFieldMap(v)
 	}
-	if v, ok := in["secretKeyRef"].(interface{}); ok && v != nil {
+	if v, ok := in["secretKeyRef"]; ok && v != nil {
 		expandedValues["secret_key_ref"] = []interface{}{v}
 	}
 
@@ -161,10 +161,10 @@ func flattenFieldRefMap(e interface{}) []interface{} {
 	in := e.(map[string]interface{})
 	expandedValues := make(map[string]interface{})
 
-	if v, ok := in["apiVersion"].(interface{}); ok && v != nil {
+	if v, ok := in["apiVersion"]; ok && v != nil {
 		expandedValues["api_version"] = v
 	}
-	if v, ok := in["fieldPath"].(interface{}); ok && v != nil {
+	if v, ok := in["fieldPath"]; ok && v != nil {
 		expandedValues["field_path"] = v
 	}
 
@@ -179,13 +179,13 @@ func flattenResourceFieldMap(e interface{}) []interface{} {
 	in := e.(map[string]interface{})
 	expandedValues := make(map[string]interface{})
 
-	if v, ok := in["containerName"].(interface{}); ok && v != nil {
+	if v, ok := in["containerName"]; ok && v != nil {
 		expandedValues["container_name"] = v
 	}
-	if v, ok := in["divisor"].(interface{}); ok && v != nil {
+	if v, ok := in["divisor"]; ok && v != nil {
 		expandedValues["divisor"] = v
 	}
-	if v, ok := in["resource"].(interface{}); ok && v != nil {
+	if v, ok := in["resource"]; ok && v != nil {
 		expandedValues["resource"] = v
 	}
 

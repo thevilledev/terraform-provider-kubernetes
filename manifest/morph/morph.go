@@ -726,7 +726,7 @@ func validateValue(t tftypes.Type, val interface{}, p *tftypes.AttributePath) []
 			Attribute: p,
 			Severity:  tfprotov5.DiagnosticSeverityError,
 			Summary:   "Provider encountered an error when trying to determine the Terraform type information for the configured manifest",
-			Detail:    err.(error).Error(),
+			Detail:    err.Error(),
 		})
 		return diags
 	}

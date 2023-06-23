@@ -12,7 +12,7 @@ import (
 
 func TestAccKubernetesDataSourceAllNamespaces_basic(t *testing.T) {
 	rxPosNum := regexp.MustCompile("^[1-9][0-9]*$")
-	nsName := regexp.MustCompile("^[a-zA-Z][-\\w]*$")
+	nsName := regexp.MustCompile(`^[a-zA-Z][-\w]*$`)
 	resource.Test(t, resource.TestCase{
 		PreCheck:          func() { testAccPreCheck(t) },
 		ProviderFactories: testAccProviderFactories,

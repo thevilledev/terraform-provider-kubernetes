@@ -103,7 +103,7 @@ func (s *RawProviderServer) getFieldManagerConfig(v map[string]tftypes.Value) (s
 }
 
 func isImportedFlagFromPrivate(p []byte) (f bool, d []*tfprotov5.Diagnostic) {
-	if p == nil || len(p) == 0 {
+	if len(p) == 0 {
 		return
 	}
 	ps, err := getPrivateStateValue(p)

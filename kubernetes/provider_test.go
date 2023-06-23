@@ -124,7 +124,7 @@ func unsetEnv(t *testing.T) func() {
 		"KUBE_TOKEN":                e.Token,
 	}
 
-	for k, _ := range envVars {
+	for k := range envVars {
 		if err := os.Unsetenv(k); err != nil {
 			t.Fatalf("Error unsetting env var %s: %s", k, err)
 		}
@@ -196,7 +196,6 @@ func testAccPreCheck(t *testing.T) {
 	if diags.HasError() {
 		t.Fatal(diags[0].Summary)
 	}
-	return
 }
 
 func getClusterVersion() (*gversion.Version, error) {
@@ -229,13 +228,13 @@ func setClusterVersionVar(t *testing.T, varName string) {
 
 func skipIfClusterVersionLessThan(t *testing.T, vs string) {
 	if clusterVersionLessThan(vs) {
-		t.Skip(fmt.Sprintf("This test does not run on cluster versions below %v", vs))
+		t.Skipf("This test does not run on cluster versions below %v", vs)
 	}
 }
 
 func skipIfClusterVersionGreaterThanOrEqual(t *testing.T, vs string) {
 	if clusterVersionGreaterThanOrEqual(vs) {
-		t.Skip(fmt.Sprintf("This test does not run on cluster versions %v and above", vs))
+		t.Skipf("This test does not run on cluster versions %v and above", vs)
 	}
 }
 

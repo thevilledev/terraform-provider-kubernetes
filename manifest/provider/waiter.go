@@ -240,11 +240,11 @@ func FieldPathToTftypesPath(fieldPath string) (*tftypes.AttributePath, error) {
 
 	path := tftypes.NewAttributePath()
 	for _, p := range t {
-		switch p.(type) {
+		switch p := p.(type) {
 		case hcl.TraverseRoot:
-			path = path.WithAttributeName(p.(hcl.TraverseRoot).Name)
+			path = path.WithAttributeName(p.Name)
 		case hcl.TraverseIndex:
-			indexKey := p.(hcl.TraverseIndex).Key
+			indexKey := p.Key
 			indexKeyType := indexKey.Type()
 			if indexKeyType.Equals(cty.String) {
 				path = path.WithElementKeyString(indexKey.AsString())
@@ -260,7 +260,7 @@ func FieldPathToTftypesPath(fieldPath string) (*tftypes.AttributePath, error) {
 				return tftypes.NewAttributePath(), fmt.Errorf("unsupported type in field path: %s", indexKeyType.FriendlyName())
 			}
 		case hcl.TraverseAttr:
-			path = path.WithAttributeName(p.(hcl.TraverseAttr).Name)
+			path = path.WithAttributeName(p.Name)
 		case hcl.TraverseSplat:
 			return tftypes.NewAttributePath(), fmt.Errorf("splat is not supported")
 		}

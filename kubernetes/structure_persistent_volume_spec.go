@@ -20,7 +20,7 @@ func flattenAWSElasticBlockStoreVolumeSource(in *v1.AWSElasticBlockStoreVolumeSo
 	if in.Partition != 0 {
 		att["partition"] = in.Partition
 	}
-	if in.ReadOnly != false {
+	if in.ReadOnly {
 		att["read_only"] = in.ReadOnly
 	}
 	return []interface{}{att}
@@ -47,7 +47,7 @@ func flattenAzureFileVolumeSource(in *v1.AzureFileVolumeSource) []interface{} {
 	att := make(map[string]interface{})
 	att["secret_name"] = in.SecretName
 	att["share_name"] = in.ShareName
-	if in.ReadOnly != false {
+	if in.ReadOnly {
 		att["read_only"] = in.ReadOnly
 	}
 	return []interface{}{att}
@@ -57,7 +57,7 @@ func flattenAzureFilePersistentVolumeSource(in *v1.AzureFilePersistentVolumeSour
 	att := make(map[string]interface{})
 	att["secret_name"] = in.SecretName
 	att["share_name"] = in.ShareName
-	if in.ReadOnly != false {
+	if in.ReadOnly {
 		att["read_only"] = in.ReadOnly
 	}
 	if in.SecretNamespace != nil {
@@ -81,7 +81,7 @@ func flattenCephFSVolumeSource(in *v1.CephFSVolumeSource) []interface{} {
 	if in.SecretRef != nil {
 		att["secret_ref"] = flattenLocalObjectReference(in.SecretRef)
 	}
-	if in.ReadOnly != false {
+	if in.ReadOnly {
 		att["read_only"] = in.ReadOnly
 	}
 	return []interface{}{att}
@@ -102,7 +102,7 @@ func flattenCephFSPersistentVolumeSource(in *v1.CephFSPersistentVolumeSource) []
 	if in.SecretRef != nil {
 		att["secret_ref"] = flattenSecretReference(in.SecretRef)
 	}
-	if in.ReadOnly != false {
+	if in.ReadOnly {
 		att["read_only"] = in.ReadOnly
 	}
 	return []interface{}{att}
@@ -114,7 +114,7 @@ func flattenCinderPersistentVolumeSource(in *v1.CinderPersistentVolumeSource) []
 	if in.FSType != "" {
 		att["fs_type"] = in.FSType
 	}
-	if in.ReadOnly != false {
+	if in.ReadOnly {
 		att["read_only"] = in.ReadOnly
 	}
 	return []interface{}{att}
